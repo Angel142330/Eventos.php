@@ -1,0 +1,96 @@
+body {
+    background: linear-gradient(90deg, #000fda, #06f5fd);
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+
+form {
+    background: linear-gradient(90deg, #000fda, #06f5fd);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center; 
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+form:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+h2 {
+    color: white;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    color: #ffffff;
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"] {
+    color: #0400ff;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+input[type="checkbox"] {
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    background: #0528f0;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background: #13151F;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="checkbox"] {
+    border-radius: 10px;
+}
