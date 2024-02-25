@@ -7,7 +7,6 @@
 </head>
 <body>
 
-<!-- Agregamos una imagen al encabezado -->
 <header>
     <h2>Añadir Evento</h2>
 </header>

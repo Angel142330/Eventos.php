@@ -2,6 +2,7 @@
 session_start();
 include 'funciones_eventos.php';
 $eventos = obtener_eventos();
+$errores=[];
 //var_dump($eventos);
 
 
@@ -13,17 +14,32 @@ if (isset($_GET['id'])) {
         // Verificar si se enviaron datos del formulario
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Actualizar los datos del evento con los datos del formulario
-            $eventos[$indice]['nombre'] = $_POST['nombre'];
-            $eventos[$indice]['fecha'] = $_POST['fecha'];
-            $eventos[$indice]['localizacion'] = $_POST['localizacion'];
-            $eventos[$indice]['pinata'] = isset($_POST['pinata']);
 
-            // Actualizar la sesión con los cambios
-            $_SESSION['eventos'] = $eventos;
+            if( $_POST['nombre']==''){
+                $errores['nombre']='El nombre no tiene que estar vacío';
+            }
+            if( $_POST['fecha']==''){
+                $errores['fecha']='La fecha no tiene que estar vacía';
+            }
+            if( $_POST['localizacion']==''){
+                $errores['localizacion']='La localizacion no tiene que estar vacía';
+            }
 
-            echo '<p>Evento actualizado exitosamente. Redirigiendo...</p>';
-            header("refresh:2;url=procesar_evento.php");
-            exit();
+            if(empty($errores)){
+                
+                $eventos[$indice]['nombre'] = $_POST['nombre'];
+                $eventos[$indice]['fecha'] = $_POST['fecha'];
+                $eventos[$indice]['localizacion'] = $_POST['localizacion'];
+                $eventos[$indice]['pinata'] = isset($_POST['pinata']);
+    
+                // Actualizar la sesión con los cambios
+                $_SESSION['eventos'] = $eventos;
+    
+                echo '<p>Evento actualizado exitosamente. Redirigiendo...</p>';
+                header("refresh:2;url=procesar_evento.php");
+                exit();
+            }
+
         }
     } else {
 
@@ -45,6 +61,6 @@ if (isset($_GET['id'])) {
     <title>Editar Evento</title>
 </head>
 <body>
-<?php editar_evento($evento) ?>
+<?php editar_evento($evento,$errores) ?>
 </body>
 </html>

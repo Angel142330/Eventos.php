@@ -1,3 +1,4 @@
+
 <?php
 function obtener_eventos() {
    
@@ -31,18 +32,22 @@ function mostrar_fila_evento($evento, $indice) {
 }
 
 
-function editar_evento($evento) {
+function editar_evento($evento,$errores) {
     ?>
     <h2>Editar Evento</h2>
     <form action="" method="post">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value="<?= $evento['nombre'] ?>" required autocomplete="off"><br>
+        <input type="text" id="nombre" name="nombre" value="<?= $evento['nombre'] ?>"  autocomplete="off"><br>
+        <p style="color: red;"> <?= isset($errores['nombre'])? $errores['nombre']:''    ?></p>
 
         <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" value="<?= $evento['fecha'] ?>" required autocomplete="off"><br>
+        <input type="date" id="fecha" name="fecha" value="<?= $evento['fecha'] ?>"  autocomplete="off"><br>
+        <p style="color: red;"> <?= isset($errores['fecha'])? $errores['fecha']:''    ?></p>
+
 
         <label for="localizacion">Localización:</label>
-        <input type="text" id="localizacion" name="localizacion" value="<?= $evento['localizacion'] ?>" required autocomplete="off"><br>
+        <input type="text" id="localizacion" name="localizacion" value="<?= $evento['localizacion'] ?>"  autocomplete="off"><br>
+        <p style="color: red;"> <?= isset($errores['localizacion'])? $errores['localizacion']:''    ?></p>
 
         <label for="pinata">¿Habrá piñata?</label>
         <input type="checkbox" id="pinata" name="pinata" <?= $evento['pinata'] ? 'checked' : '' ?>><br>
